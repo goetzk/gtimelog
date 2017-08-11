@@ -1,0 +1,45 @@
+Requires GTK3 
+- https://github.com/gtimelog/gtimelog/blob/09b481899d7eab01f0ae5cdf8bb9209d02bf477a/other-requirements.txt
+- https://github.com/gtimelog/gtimelog/blob/b85794f56a4e97bd766ada7e257e0be04b043d4b/src/gtimelog/main.py#L66
+
+Links about GTK3 on OSX:
+
+GTK does have a Quartz backend
+- https://www.gtk.org/download/macos.php
+
+- https://wiki.python.org/moin/PyGobject
+
+- https://wiki.gnome.org/Projects/GTK+/OSX/Integration#Python integration package mentioned here isn't in ports.
+
+- could gtk be switched via macports to use quartz? xquartz feels clunky.
+
+Macports:
+- macports has 0.9.2, the last 'release' from 2014; new tags from 2016 available https://github.com/gtimelog/gtimelog/releases
+
+Installing gtimelog via macports pulls in GTK directly and X11 via cairo
+```
+Karls-Air$ port info gtimelog[...]
+Library Dependencies: python27, py27-gobject3
+[...]
+Karls-Air$ port info py27-gobject3
+[...]
+Library Dependencies: python27, glib2, libffi, py27-cairo, gobject-introspection
+[...]
+Karls-Air$ port info gobject-introspection
+[...]
+Library Dependencies: cairo, glib2, libffi, py27-mako
+[...]
+Karls-Air$ port info py27-cairo
+[...]
+Library Dependencies: python27, cairo
+[...]
+Karls-Air$ port info cairo
+[...]
+Library Dependencies: libpixman, glib2, fontconfig, freetype, libpng, zlib, expat, xrender, xorg-libXext, xorg-xcb-util
+```
+
+-  gtk-mac-bundler is available in ports
+
+
+Alternatives:
+https://pybee.org/project/projects/libraries/toga/ (https://toga.readthedocs.io/en/latest/) seems likely, requires python 3.4 (i'm currently running gtimelog as a 2.7 app)
